@@ -35,7 +35,7 @@ public class DemoController {
         try {
             lock.lock();
             logger.info("Request Thread - " + counter + "[" + serverId +"] locked and begun...");
-            Thread.sleep(10); // 5 sec
+            Thread.sleep(2000); // 2 sec
             logger.info("Request Thread - " + counter + "[" + serverId +"] ended successfully...");
         } catch (Exception ex) {
             logger.error("Error occurred");
@@ -57,7 +57,7 @@ public class DemoController {
         try {
             lock.lock();
             logger.info("Request Thread - " + counter + "[" + serverId +"] locked and begun...");
-            Thread.sleep(5000); // 5 sec
+            Thread.sleep(15000); // 15 sec
             logger.info("Request Thread - " + counter + "[" + serverId +"] ended successfully...");
         } catch (Exception ex) {
             logger.error("Error occurred");
