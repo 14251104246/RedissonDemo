@@ -30,63 +30,61 @@ public class DemoController {
     public String lock3() {
         int serverId = 3;
 //        Long counter = redisTemplate.opsForValue().increment("COUNTER", 1);
-        Long counter = 3l;
+
         RLock lock = redissonClient.getLock("TEST");
         try {
             lock.lock();
-            logger.info("Request Thread - " + counter + "[" + serverId +"] locked and begun...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] locked and begun...");
             Thread.sleep(2000); // 2 sec
-            logger.info("Request Thread - " + counter + "[" + serverId +"] ended successfully...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] ended successfully...");
         } catch (Exception ex) {
             logger.error("Error occurred");
         } finally {
             lock.unlock();
-            logger.info("Request Thread - " + counter + "[" + serverId +"] unlocked...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] unlocked...");
         }
 
-        return "lock-" + counter + "[" + serverId +"]";
+        return "lock-" + Thread.currentThread().getName() + "[" + serverId +"]";
     }
 
     @ResponseBody
     @RequestMapping("/lock2")
     public String lock2() {
-        int serverId = 1;
+        int serverId = 2;
 //        Long counter = redisTemplate.opsForValue().increment("COUNTER", 1);
-        Long counter = 1l;
         RLock lock = redissonClient.getLock("TEST");
         try {
             lock.lock();
-            logger.info("Request Thread - " + counter + "[" + serverId +"] locked and begun...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] locked and begun...");
             Thread.sleep(15000); // 15 sec
-            logger.info("Request Thread - " + counter + "[" + serverId +"] ended successfully...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] ended successfully...");
         } catch (Exception ex) {
             logger.error("Error occurred");
         } finally {
             lock.unlock();
-            logger.info("Request Thread - " + counter + "[" + serverId +"] unlocked...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] unlocked...");
         }
 
-        return "lock-" + counter + "[" + serverId +"]";
+        return "lock-" + Thread.currentThread().getName() + "[" + serverId +"]";
     }
 
     @ResponseBody
     @RequestMapping("/lock")
     public String lock(@RequestParam("sid") String serverId) {
-//        Long counter = redisTemplate.opsForValue().increment("COUNTER", 1);
-        Long counter = 1l;
+
         RLock lock = redissonClient.getLock("TEST");
         try {
             lock.lock();
-            logger.info("Request Thread - " + counter + "[" + serverId +"] locked and begun...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] locked and begun...");
             Thread.sleep(5000); // 5 sec
-            logger.info("Request Thread - " + counter + "[" + serverId +"] ended successfully...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] ended successfully...");
         } catch (Exception ex) {
             logger.error("Error occurred");
         } finally {
             lock.unlock();
-            logger.info("Request Thread - " + counter + "[" + serverId +"] unlocked...");
+            logger.info("Request Thread - " + Thread.currentThread().getName() + "[" + serverId +"] unlocked...");
         }
 
-        return "lock-" + counter + "[" + serverId +"]";
+        return "lock-" + Thread.currentThread().getName() + "[" + serverId +"]";
     }
 }
