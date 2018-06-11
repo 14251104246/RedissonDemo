@@ -20,7 +20,37 @@ spring:
 #      master: master1
 #      nodes: 172.16.14.163:6379,172.16.14.163:16379
 server:
-  port: 9091
+  port: 9092
 
 #: ===============================
 
+#
+#sentinelServersConfig:
+#  idleConnectionTimeout: 10000
+#  pingTimeout: 1000
+#  connectTimeout: 10000
+#  timeout: 3000
+#  retryAttempts: 3
+#  retryInterval: 1500
+#  reconnectionTimeout: 3000
+#  failedAttempts: 3
+##  password: 12345678
+#  subscriptionsPerConnection: 5
+#  clientName: null
+#  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
+#  slaveSubscriptionConnectionMinimumIdleSize: 1
+#  slaveSubscriptionConnectionPoolSize: 50
+#  slaveConnectionMinimumIdleSize: 10
+#  slaveConnectionPoolSize: 64
+#  masterConnectionMinimumIdleSize: 10
+#  masterConnectionPoolSize: 64
+#  readMode: "SLAVE"
+#  sentinelAddresses:
+#  - "redis://172.16.14.163:5672"
+#  - "redis://172.16.14.163:15672"
+#  masterName: "master1"
+#  database: 0
+#threads: 0
+#nettyThreads: 0
+#codec: !<org.redisson.codec.JsonJacksonCodec> {}
+#useLinuxNativeEpoll: false
