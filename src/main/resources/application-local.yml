@@ -1,16 +1,26 @@
 spring:
   redis:
+    # Redisæ•°æ®åº“ç´¢å¼•ï¼ˆé»˜è®¤ä¸º0ï¼‰
     database: 0
-    password: 12345678 #ÃÜÂë
-    port: 6379
-    timeout: 0
-    pool:
-      max-active: 8 #×î´óÁ¬½ÓÊı
-      max-idle: 8 #×î´ó¿ÕÏĞÁ¬½ÓÊı
-      max-wait: -1 #×î´óµÈ´ıÊ±¼ä
-      min-idle: 0
-    sentinel:
-      master: master1
-      nodes: 172.16.33.216:16001,172.16.33.216:16002
+    host: ${REDIS_HOST:loxalhost}
+    port: ${REDIS_PORT:6379}
+#    password: ${REDIS_PASSWORD:}
+
+#  redis:
+#    database: 0
+##    password: 12345678
+#    port: 6379
+#    timeout: 0
+#    pool:
+#      max-active: 8
+#      max-idle: 8
+#      max-wait: -1
+#      min-idle: 0
+#    sentinel:
+#      master: master1
+#      nodes: 172.16.14.163:6379,172.16.14.163:16379
 server:
-  port: 9090
+  port: 9091
+
+#: ===============================
+

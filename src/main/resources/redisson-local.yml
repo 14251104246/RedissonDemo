@@ -8,7 +8,7 @@ sentinelServersConfig:
   retryInterval: 1500
   reconnectionTimeout: 3000
   failedAttempts: 3
-  password: 12345678
+#  password: 12345678
   subscriptionsPerConnection: 5
   clientName: null
   loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
@@ -20,8 +20,8 @@ sentinelServersConfig:
   masterConnectionPoolSize: 64
   readMode: "SLAVE"
   sentinelAddresses:
-  - "redis://172.16.33.216:16001"
-  - "redis://172.16.33.216:16002"
+  - "redis://172.16.14.163:5672"
+  - "redis://172.16.14.163:15672"
   masterName: "master1"
   database: 0
 threads: 0

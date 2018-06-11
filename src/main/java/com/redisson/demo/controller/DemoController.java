@@ -26,9 +26,54 @@ public class DemoController {
     private RedissonClient redissonClient;
 
     @ResponseBody
+    @RequestMapping("/lock3")
+    public String lock3() {
+        int serverId = 3;
+//        Long counter = redisTemplate.opsForValue().increment("COUNTER", 1);
+        Long counter = 3l;
+        RLock lock = redissonClient.getLock("TEST");
+        try {
+            lock.lock();
+            logger.info("Request Thread - " + counter + "[" + serverId +"] locked and begun...");
+            Thread.sleep(10); // 5 sec
+            logger.info("Request Thread - " + counter + "[" + serverId +"] ended successfully...");
+        } catch (Exception ex) {
+            logger.error("Error occurred");
+        } finally {
+            lock.unlock();
+            logger.info("Request Thread - " + counter + "[" + serverId +"] unlocked...");
+        }
+
+        return "lock-" + counter + "[" + serverId +"]";
+    }
+
+    @ResponseBody
+    @RequestMapping("/lock2")
+    public String lock2() {
+        int serverId = 1;
+//        Long counter = redisTemplate.opsForValue().increment("COUNTER", 1);
+        Long counter = 1l;
+        RLock lock = redissonClient.getLock("TEST");
+        try {
+            lock.lock();
+            logger.info("Request Thread - " + counter + "[" + serverId +"] locked and begun...");
+            Thread.sleep(5000); // 5 sec
+            logger.info("Request Thread - " + counter + "[" + serverId +"] ended successfully...");
+        } catch (Exception ex) {
+            logger.error("Error occurred");
+        } finally {
+            lock.unlock();
+            logger.info("Request Thread - " + counter + "[" + serverId +"] unlocked...");
+        }
+
+        return "lock-" + counter + "[" + serverId +"]";
+    }
+
+    @ResponseBody
     @RequestMapping("/lock")
     public String lock(@RequestParam("sid") String serverId) {
-        Long counter = redisTemplate.opsForValue().increment("COUNTER", 1);
+//        Long counter = redisTemplate.opsForValue().increment("COUNTER", 1);
+        Long counter = 1l;
         RLock lock = redissonClient.getLock("TEST");
         try {
             lock.lock();

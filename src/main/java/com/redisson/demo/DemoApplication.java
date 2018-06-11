@@ -18,17 +18,17 @@ public class DemoApplication {
 	@Autowired
 	private Environment env;
 
-	@Bean(destroyMethod = "shutdown")
-	public RedissonClient redissonClient() throws IOException {
-		String[] profiles = env.getActiveProfiles();
-		String profile = "";
-		if(profiles.length > 0) {
-			profile = "-" + profiles[0];
-		}
-		return Redisson.create(
-				Config.fromYAML(new ClassPathResource("redisson" + profile + ".yml").getInputStream())
-		);
-	}
+//	@Bean(destroyMethod = "shutdown")
+//	public RedissonClient redissonClient() throws IOException {
+//		String[] profiles = env.getActiveProfiles();
+//		String profile = "";
+//		if(profiles.length > 0) {
+//			profile = "-" + profiles[0];
+//		}
+//		return Redisson.create(
+//				Config.fromYAML(new ClassPathResource("redisson" + profile + ".yml").getInputStream())
+//		);
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
